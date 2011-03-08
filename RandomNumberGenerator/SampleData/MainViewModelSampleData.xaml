@@ -1,0 +1,20 @@
+<RandomNumberGenerator_ViewModels:MainViewModel xmlns:RandomNumberGenerator_ViewModels="clr-namespace:RandomNumberGenerator.ViewModels" xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:GalaSoft_MvvmLight_Command="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.WP7" IsInDesignMode="True" IsInDesignModeStatic="False">
+	<RandomNumberGenerator_ViewModels:MainViewModel.GeneratedNumbersList>
+		<System:Int32>30</System:Int32>
+		<System:Int32>61</System:Int32>
+		<System:Int32>37</System:Int32>
+		<System:Int32>78</System:Int32>
+		<System:Int32>44</System:Int32>
+		<System:Int32>58</System:Int32>
+		<System:Int32>87</System:Int32>
+		<System:Int32>58</System:Int32>
+		<System:Int32>22</System:Int32>
+		<System:Int32>92</System:Int32>
+	</RandomNumberGenerator_ViewModels:MainViewModel.GeneratedNumbersList>
+	<RandomNumberGenerator_ViewModels:MainViewModel.NextCommand>
+		<GalaSoft_MvvmLight_Command:RelayCommand/>
+	</RandomNumberGenerator_ViewModels:MainViewModel.NextCommand>
+	<RandomNumberGenerator_ViewModels:MainViewModel.ResetCommand>
+		<GalaSoft_MvvmLight_Command:RelayCommand/>
+	</RandomNumberGenerator_ViewModels:MainViewModel.ResetCommand>
+</RandomNumberGenerator_ViewModels:MainViewModel>

@@ -1,0 +1,95 @@
+﻿<phone:PhoneApplicationPage xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                            xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+                            xmlns:Custom="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+                            xmlns:GalaSoft_MvvmLight_Command="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WP7"
+                            x:Class="RandomNumberGenerator.MainPage"
+                            mc:Ignorable="d"
+                            d:DesignWidth="480"
+                            d:DesignHeight="768"
+                            DataContext="{Binding MainViewModel, Source={StaticResource Locator}}"
+                            FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                            FontSize="{StaticResource PhoneFontSizeNormal}"
+                            Foreground="{StaticResource PhoneForegroundBrush}"
+                            SupportedOrientations="Portrait"
+                            Orientation="Portrait"
+                            shell:SystemTray.IsVisible="True"
+                            d:DataContext="{d:DesignData /SampleData/MainViewModelSampleData.xaml}">
+    <phone:PhoneApplicationPage.Resources>
+        <ItemsPanelTemplate x:Key="WrapPanelTemplate">
+            <toolkit:WrapPanel />
+        </ItemsPanelTemplate>
+        <DataTemplate x:Key="WrapPanelItemTemplate">
+            <Grid Margin="15,25,20,0"
+                  Width="70"
+                  Height="70">
+                <TextBlock Margin="0,0,1,0"
+                           TextWrapping="Wrap"
+                           Text="{Binding}"
+                           FontSize="48"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </phone:PhoneApplicationPage.Resources>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot"
+          Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="ApplicationTitle"
+                   Text="RANDOM NUMBER GENERATOR"
+                   Style="{StaticResource PhoneTextNormalStyle}"
+                   Grid.Row="0"
+                   Margin="12,17,0,15" />
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel"
+              Grid.Row="1"
+              Margin="12,0,12,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <TextBlock FontSize="32"
+                           VerticalAlignment="Center"
+                           Text="Maximum" />
+                <TextBox Text="{Binding MaximumValue, Mode=TwoWay}"
+                         VerticalAlignment="Center"
+                         Width="100" TextAlignment="Right" InputScope="TelephoneAreaCode" GotFocus="TextBox_GotFocus" />
+                <Button Content="Next" IsEnabled="{Binding CanGenerateNumber}">
+                    <Custom:Interaction.Triggers>
+                        <Custom:EventTrigger EventName="Click">
+                            <GalaSoft_MvvmLight_Command:EventToCommand Command="{Binding NextCommand}" />
+                        </Custom:EventTrigger>
+                    </Custom:Interaction.Triggers>
+                </Button>
+                <Button Content="Reset">
+                    <Custom:Interaction.Triggers>
+                        <Custom:EventTrigger EventName="Click">
+                            <GalaSoft_MvvmLight_Command:EventToCommand Command="{Binding ResetCommand}" />
+                        </Custom:EventTrigger>
+                    </Custom:Interaction.Triggers>
+                </Button>
+
+            </StackPanel>
+            <ListBox ItemsSource="{Binding GeneratedNumbersList}"
+                     Grid.Row="1"
+                     Margin="15"
+                     ItemsPanel="{StaticResource WrapPanelTemplate}"
+                     ItemTemplate="{StaticResource WrapPanelItemTemplate}" />
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>
