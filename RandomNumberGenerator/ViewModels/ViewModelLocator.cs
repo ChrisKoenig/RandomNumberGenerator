@@ -2,7 +2,6 @@
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Xml.Serialization;
-using GalaSoft.MvvmLight.Messaging;
 
 namespace RandomNumberGenerator.ViewModels
 {
