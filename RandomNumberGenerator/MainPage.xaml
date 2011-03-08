@@ -70,9 +70,9 @@
                          Width="100" TextAlignment="Right" InputScope="TelephoneAreaCode" GotFocus="TextBox_GotFocus" />
                 <Button Content="Next" IsEnabled="{Binding CanGenerateNumber}">
                     <Custom:Interaction.Triggers>
-                        <Custom:EventTrigger EventName="Click">
-                            <GalaSoft_MvvmLight_Command:EventToCommand Command="{Binding NextCommand}" />
-                        </Custom:EventTrigger>
+                    	<Custom:EventTrigger EventName="Click">
+                    		<GalaSoft_MvvmLight_Command:EventToCommand Command="{Binding NextCommand}" />
+                    	</Custom:EventTrigger>
                     </Custom:Interaction.Triggers>
                 </Button>
                 <Button Content="Reset">
@@ -90,6 +90,7 @@
                      ItemsPanel="{StaticResource WrapPanelTemplate}"
                      ItemTemplate="{StaticResource WrapPanelItemTemplate}" />
         </Grid>
+        <Image VerticalAlignment="Bottom" Grid.Row="1" d:LayoutOverrides="GridBox" Source="/Background.png" Height="480" Canvas.ZIndex="-26" Opacity="0.17"/>
     </Grid>
 
 </phone:PhoneApplicationPage>
