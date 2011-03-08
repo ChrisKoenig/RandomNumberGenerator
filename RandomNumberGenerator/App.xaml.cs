@@ -28,7 +28,7 @@ namespace RandomNumberGenerator
         /// </summary>
         public App()
         {
-            // Global handler for uncaught exceptions. 
+            // Global handler for uncaught exceptions.
             UnhandledException += Application_UnhandledException;
 
             // Show graphics profiling information while debugging.
@@ -40,7 +40,7 @@ namespace RandomNumberGenerator
                 // Show the areas of the app that are being redrawn in each frame.
                 //Application.Current.Host.Settings.EnableRedrawRegions = true;
 
-                // Enable non-production analysis visualization mode, 
+                // Enable non-production analysis visualization mode,
                 // which shows areas of a page that are being GPU accelerated with a colored overlay.
                 //Application.Current.Host.Settings.EnableCacheVisualization = true;
             }
@@ -62,12 +62,16 @@ namespace RandomNumberGenerator
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
+            var vml = this.Resources["Locator"] as ViewModels.ViewModelLocator;
+            vml.RestoreState();
         }
 
         // Code to execute when the application is deactivated (sent to background)
         // This code will not execute when the application is closing
         private void Application_Deactivated(object sender, DeactivatedEventArgs e)
         {
+            var vml = this.Resources["Locator"] as ViewModels.ViewModelLocator;
+            vml.SaveState();
         }
 
         // Code to execute when the application is closing (eg, user hit Back)
@@ -130,6 +134,6 @@ namespace RandomNumberGenerator
             RootFrame.Navigated -= CompleteInitializePhoneApplication;
         }
 
-        #endregion
+        #endregion Phone application initialization
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Xml.Serialization;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
@@ -7,7 +8,10 @@ namespace RandomNumberGenerator.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
+        [XmlIgnore]
         public RelayCommand ResetCommand { get; private set; }
+
+        [XmlIgnore]
 
         public RelayCommand NextCommand { get; private set; }
 
