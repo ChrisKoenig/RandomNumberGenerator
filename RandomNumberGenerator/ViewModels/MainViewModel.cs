@@ -53,7 +53,7 @@ namespace RandomNumberGenerator.ViewModels
             int nextNumber = 0;
             while (stillLooking)
             {
-                nextNumber = _random.Next(MaximumValue);
+                nextNumber = _random.Next(MaximumValue + 1);
                 stillLooking = nextNumber == 0 || GeneratedNumbersList.Contains(nextNumber);
             }
             AddItemToList(nextNumber);
