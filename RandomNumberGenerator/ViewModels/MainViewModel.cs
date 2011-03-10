@@ -12,7 +12,6 @@ namespace RandomNumberGenerator.ViewModels
         public RelayCommand ResetCommand { get; private set; }
 
         [XmlIgnore]
-
         public RelayCommand NextCommand { get; private set; }
 
         public MainViewModel()
@@ -28,6 +27,7 @@ namespace RandomNumberGenerator.ViewModels
         {
             GeneratedNumbersList.Clear();
             _random = new Random();
+            RaisePropertyChanged("CanGenerateNumber");
         }
 
         private void AddItemToList(int i)
